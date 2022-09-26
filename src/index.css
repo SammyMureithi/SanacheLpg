@@ -11,3 +11,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+#loginCard{
+  margin: 10px auto auto;
+}
+#loginBtn{
+  margin: 0px auto;
+}
+#input {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: space-around;
+  padding: 10px auto;
+}
