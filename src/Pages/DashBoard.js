@@ -1,8 +1,12 @@
 import React from 'react'
+import SummeryCard from '../Components/SummeryCard'
+
 
 function DashBoard() {
   return (
-    <div>DashBoard</div>
+      <div>
+          <SummeryCard/>
+    </div>
   )
 }
 

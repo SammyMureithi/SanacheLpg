@@ -11,6 +11,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 function LoginCard() {
+    const [navigateTo, setNavigate] = useState( "/" );
     const [response, setResponsonse] = useState( {
         error: null,
         message:""
@@ -29,7 +30,7 @@ function LoginCard() {
         const newFormData = new FormData();
         newFormData.append( "username", loginDetails.username );
         newFormData.append( "password", loginDetails.password );
-        fetch( "https://vizasolutions.co.ke/viza-lpg/php/login.php", {
+        fetch( "https://sabugostores.co.ke/F1jw1PiAZwU-sanacheLPG/php/login.php", {
             method: "POST",
             headers: {
                 
@@ -37,18 +38,23 @@ function LoginCard() {
             body: newFormData
         } )
             .then( res => res.json() )
-            .then( data => 
-                setResponsonse(data))  
+            .then( data => {
+                console.log(data)
+                setResponsonse(data)
+            })  
             .catch( error => console.log( error ) );
-        if ( response.error === true ) {
-            setTimeout( () => {
-                navigate( "/DashBoard" );
-            },1000)
-          
+        if ( response.error === false ) {
+            console.log( response.error );
+            console.log( "Login Successfull" )
+            setNavigate( "/DashBoard" );
+            
         }
         else {
+            console.log( response.error );
+            console.log("Not Loggeded in")
             return null;
         }
+        navigate( navigateTo );
     }
     const newToast = response.error ? (
         <Stack spacing={2} sx={{ width: '100%' }}>
@@ -61,7 +67,7 @@ function LoginCard() {
     ) : (
         <Stack spacing={2} sx={{ width: '100%' }}>
             <Snackbar open={true} autoHideDuration={2000} >
-                <Alert severity="error" sx={{ width: '100%' }}>
+                <Alert severity="success" sx={{ width: '100%' }}>
                     {response.message}
                 </Alert>
             </Snackbar>
@@ -88,7 +94,7 @@ function LoginCard() {
                   </Grid>
       </CardContent>
       <CardActions>
-        <Button variant="contained" color='primary' id='loginBtn' onClick={Login}>LOGIN</Button>
+        <Button variant="contained" color='primary' id='loginBtn' onClick={Login} to={navigateTo}>LOGIN</Button>
               </CardActions>
               <CardContent>
                   <Button variant='text'>Forgot Password</Button>
