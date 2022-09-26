@@ -1,12 +1,71 @@
 import { CardMedia } from '@mui/material'
 import { CardContent } from '@mui/material'
 import { Grid } from '@mui/material'
+import { Snackbar } from '@mui/material'
+import { Stack } from '@mui/material'
+import { Alert } from '@mui/material'
 import { TextField } from '@mui/material'
 import { Button,CardActions } from '@mui/material'
 import { Card } from '@mui/material'
-import React from 'react'
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 function LoginCard() {
+    const [response, setResponsonse] = useState( {
+        error: null,
+        message:""
+    } );
+    const [loginDetails, setLoginDetails] = useState( {
+        username: "",
+        password:""
+    } )
+    function handleInputChange( e ) {
+        setLoginDetails( prevDetails => {
+            return {...prevDetails,[e.target.name]:e.target.value}
+        } )
+    }
+    const navigate = useNavigate();
+    function Login() {
+        const newFormData = new FormData();
+        newFormData.append( "username", loginDetails.username );
+        newFormData.append( "password", loginDetails.password );
+        fetch( "https://vizasolutions.co.ke/viza-lpg/php/login.php", {
+            method: "POST",
+            headers: {
+                
+            },
+            body: newFormData
+        } )
+            .then( res => res.json() )
+            .then( data => 
+                setResponsonse(data))  
+            .catch( error => console.log( error ) );
+        if ( response.error === true ) {
+            setTimeout( () => {
+                navigate( "/DashBoard" );
+            },1000)
+          
+        }
+        else {
+            return null;
+        }
+    }
+    const newToast = response.error ? (
+        <Stack spacing={2} sx={{ width: '100%' }}>
+            <Snackbar open={true} autoHideDuration={2000} >
+                <Alert severity="error" sx={{ width: '100%' }}>
+                    {response.message}
+                </Alert>
+            </Snackbar>
+        </Stack>
+    ) : (
+        <Stack spacing={2} sx={{ width: '100%' }}>
+            <Snackbar open={true} autoHideDuration={2000} >
+                <Alert severity="error" sx={{ width: '100%' }}>
+                    {response.message}
+                </Alert>
+            </Snackbar>
+        </Stack> )
   return (
       <>
          <Card sx={{ maxWidth: 345 }} id="loginCard">
@@ -19,20 +78,24 @@ function LoginCard() {
               <CardContent>
                   <Grid container direction={"column"} spacing={2}>
                       <Grid item>
-                          <TextField label="Username" variant="outlined" />
+                          <TextField label="Username" variant="outlined" 
+                              name='username' value={loginDetails.username} onChange={handleInputChange} />
                       </Grid>
                       <Grid item>
-                          <TextField label="Password" variant="outlined" />
+                          <TextField label="Password" variant="outlined" 
+                          name='password'    value={loginDetails.password} onChange={handleInputChange} type="password"/>
                       </Grid>
                   </Grid>
       </CardContent>
       <CardActions>
-        <Button variant="contained" color='primary' id='loginBtn'>LOGIN</Button>
+        <Button variant="contained" color='primary' id='loginBtn' onClick={Login}>LOGIN</Button>
               </CardActions>
               <CardContent>
                   <Button variant='text'>Forgot Password</Button>
               </CardContent>
-    </Card>
+          </Card>
+          {response.error ===null? null: newToast}
+         
       </>
   )
 }
