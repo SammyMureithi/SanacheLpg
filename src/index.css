@@ -65,6 +65,12 @@ code {
 .x-close{
   text-align: right;
 }
+#alert-dialog-description1{
+  width: 150px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 2rem;
+}
 @media only screen and (max-width: 700px) {
   .sumCard{
     display: flex;
