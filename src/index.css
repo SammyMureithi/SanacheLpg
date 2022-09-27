@@ -71,6 +71,20 @@ code {
   justify-content: space-between;
   padding: 0px 2rem;
 }
+#alert-dialog-description12{
+  width: 150px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 2rem;
+  color: red;
+}
+#alert-dialog-description13{
+  width: 150px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 2rem;
+  color: green;
+}
 @media only screen and (max-width: 700px) {
   .sumCard{
     display: flex;

@@ -100,7 +100,80 @@ function Accessory( { title, amount ,classname} ) {
         </DialogActions>
         </Dialog>
       )
-   }
+    }
+    else if (classname==="TodaysSales") {
+      return (
+        <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">
+            {"Todays Sales"}
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description1">
+            <Typography variant='h8'>Net Sales:</Typography>
+              <Typography variant='h8'>Kes.0</Typography>
+              </DialogContentText>
+            <DialogContentText id="alert-dialog-description1">
+            <Typography variant='h8'>Invoice Sale</Typography>
+              <Typography variant='h8'>Kes.0</Typography>
+              </DialogContentText>
+            <DialogContentText id="alert-dialog-description1">
+            <Typography variant='h8'>Discounts</Typography>
+              <Typography variant='h8'>Kes.0</Typography>
+            </DialogContentText>
+            <DialogContentText id="alert-dialog-description1">
+            <Typography variant='h8'>WholeSale</Typography>
+              <Typography variant='h8'>Kes.0</Typography>
+            </DialogContentText>
+            <DialogContentText id="alert-dialog-description1">
+            <Typography variant='h8'>Retail</Typography>
+              <Typography variant='h8'>Kes.0</Typography>
+            </DialogContentText>
+            <DialogContentText id="alert-dialog-description12">
+            <Typography variant='h8'></Typography>
+            <Typography variant='h8'>Cylinder</Typography>
+              <Typography variant='h8'>Refill</Typography>
+            </DialogContentText>
+            <DialogContentText id="alert-dialog-description1">
+            <Typography variant='h8'>3kg</Typography>
+              <Typography variant='h8'>Kes.0</Typography>
+              <Typography variant='h8'>Kes.0</Typography>
+            </DialogContentText>
+            <DialogContentText id="alert-dialog-description1">
+            <Typography variant='h8'>6kg</Typography>
+              <Typography variant='h8'>Kes.0</Typography>
+              <Typography variant='h8'>Kes.0</Typography>
+            </DialogContentText>
+            <DialogContentText id="alert-dialog-description1">
+            <Typography variant='h8'>13kg</Typography>
+              <Typography variant='h8'>Kes.0</Typography>
+              <Typography variant='h8'>Kes.0</Typography>
+            </DialogContentText>
+            <DialogContentText id="alert-dialog-description1">
+            <Typography variant='h8'>22.5kg</Typography>
+              <Typography variant='h8'>Kes.0</Typography>
+              <Typography variant='h8'>Kes.0</Typography>
+            </DialogContentText>
+            <DialogContentText id="alert-dialog-description1">
+            <Typography variant='h8'>50Kg</Typography>
+              <Typography variant='h8'>Kes.0</Typography>
+              <Typography variant='h8'>Kes.0</Typography>
+            </DialogContentText>
+            <DialogContentText id="alert-dialog-description1">
+            <Typography variant='h8'>Accessory</Typography>
+              <Typography variant='h8'>Kes.0</Typography>
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+          <Button onClick={handleClose}>Cancel</Button>
+        </DialogActions>
+        </Dialog>
+      )
+      }
     else {
       return (
         <Dialog
@@ -110,16 +183,24 @@ function Accessory( { title, amount ,classname} ) {
           aria-describedby="alert-dialog-description"
         >
           <DialogTitle id="alert-dialog-title">
-            {"Use Google's location service?"}
+            {"Todays Expenses"}
           </DialogTitle>
           <DialogContent>
-            <DialogContentText id="alert-dialog-description">
-            Let Google help apps determine location. This means sending anonymous
-              location data to Google, even when no apps are running.{classname}
+            <DialogContentText id="alert-dialog-description13">
+            <Typography variant='h8'>Confirmed</Typography>
+              <Typography variant='h8'>Kes.0</Typography>
+            </DialogContentText>
+            <DialogContentText id="alert-dialog-description1">
+            <Typography variant='h8'>Pending</Typography>
+              <Typography variant='h8'>Kes.0</Typography>
+            </DialogContentText>
+            <DialogContentText id="alert-dialog-description12">
+            <Typography variant='h8'>Rejected</Typography>
+              <Typography variant='h8'>Kes.0</Typography>
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-          <Button onClick={handleClose}>Allaa</Button>
+          <Button onClick={handleClose}>Cancel</Button>
         </DialogActions>
         </Dialog>
       )
