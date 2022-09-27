@@ -10,12 +10,54 @@ import Drawer from '../Components/Drawer';
 
 function DashBoard() {
     const [data, setData] = useState( {
-        ttl6kgGasPercentage: 0,
-        ttl6kgRefill: 0,
-        tt13kgGasPercentage: 0,
-        ttl13kgRefill: 0,
-        ttl13kgCylinder: 0,
-        ttl6kgCylinder:0
+        ttl6kgRefill: 280,
+        ttl13kgRefill: 126,
+        ttl45kgRefill: 0,
+        ttl6kgCylinder: 262,
+        ttl13kgCylinder: 124,
+        ttl45kgCylinder: 0,
+        ttl3kgRefill: 0,
+        ttl22kgRefill: 0,
+        ttl50kgRefill: 0,
+        ttl3kgCylinder: 0,
+        ttl22kgCylinder: 0,
+        ttl50kgCylinder: 0,
+        ttl6kgGasPercentage: 51.66051660516605,
+        tt13kgGasPercentage: 50.4,
+        tt45kgGasPercentage: 0,
+        ttl6kgEmptiesPercentage: 48.33948339483395,
+        tt13kgEmptiesPercentage: 49.6,
+        tt45kgEmptiesPercentage: 0,
+        ttlAccessories: 30,
+        ttlBurner: 0,
+        ttlGrill: 30,
+        ttlRegulator: 0,
+        ttlHorse_pipe: 0,
+        ttlOthers: 0,
+        ttlOils: 0,
+        ttlSale: 0,
+        invoice_sale: 0,
+        ttl_rt: 0,
+        ttl_ws: 0,
+        ttl6kgRefillSales: 0,
+        ttl13kgRefillSale: 0,
+        ttl45kgRefillSale: 0,
+        ttl6kgCylinderSale: 0,
+        ttl13kgCylinderSale: 0,
+        ttl45kgCylinderSale: 0,
+        ttl3kgRefillSales: 0,
+        ttl22kgRefillSale: 0,
+        ttl50kgRefillSale: 0,
+        ttl3kgCylinderSale: 0,
+        ttl22kgCylinderSale: 0,
+        ttl50kgCylinderSale: 0,
+        ttlAccessoriesSale: 0,
+        ttPending: 0,
+        ttExpConfirmed: 0,
+        ttRejects: 0,
+        totalDiscount: 0
+
+    
     });
     const [stationId, setStationId] = useState("");
     useEffect( () => {
@@ -44,15 +86,15 @@ function DashBoard() {
                        <div className='sumCard'>
                             <Drawer fullname={Context.userSession.fullname} />
                             <SummeryCard size={"6kg"} percentage={data.ttl6kgGasPercentage} gas={data.ttl6kgRefill}
-                                empyty={data.ttl6kgCylinder} />
+                                empyty={data.ttl6kgCylinder}  />
                             <SummeryCard size="13kg" percentage={data.tt13kgGasPercentage} gas={data.ttl13kgRefill}
-                                empyty={data.ttl13kgCylinder}/>
+                                empyty={data.ttl13kgCylinder} />
                         </div>
                         <div className='others'>
-                            <Accessory title="Others" amount="3kg,22.5kg,45kg,50kg"  classname="Others"/>
-                            <Accessory title={"Accessory"} amount="0"  classname="Acessory"/>
-                            <Accessory title={"Todays Sales"} amount="Kes.20,192"  classname="TodaysSales"/>
-                            <Accessory title={"Todays Expenses"} amount="Kes.192"  classname="TodaysExpenses"/>
+                            <Accessory title="Others" amount="3kg,22.5kg,45kg,50kg"  classname="Others" data={ data}/>
+                            <Accessory title={"Accessory"} amount={data.ttlAccessories}  classname="Acessory" data={ data}/>
+                            <Accessory title={"Todays Sales"} amount={"Kes."+data.ttlSale}  classname="TodaysSales" data={ data}/>
+                            <Accessory title={"Todays Expenses"} amount={"Kes."+ data.ttExpConfirmed}  classname="TodaysExpenses" data={ data}/>
                         </div>
                         <Fab color="primary" aria-label="add" id='fab'>
                             <AddIcon />

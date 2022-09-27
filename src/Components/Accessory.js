@@ -5,7 +5,7 @@ import { Typography } from '@mui/material'
 import React, { useState } from 'react'
 import AlertDialog from './PopOverDashBoard'
 
-function Accessory( { title, amount ,classname} ) {
+function Accessory( { title, amount ,classname,data} ) {
   const [open, setOpen] = useState( false );
   function handleClick() {
     setOpen( true );
@@ -33,23 +33,23 @@ function Accessory( { title, amount ,classname} ) {
             </DialogContentText>
             <DialogContentText id="alert-dialog-description1">
             <Typography variant='h8'>3Kg</Typography>
-              <Typography variant='h8'>0</Typography>
-              <Typography variant='h8'>10</Typography>
+              <Typography variant='h8'>{ data.ttl3kgRefill}</Typography>
+              <Typography variant='h8'>{ data.ttl3kgRefill}</Typography>
             </DialogContentText>
             <DialogContentText id="alert-dialog-description1">
             <Typography variant='h8'>22.5Kg</Typography>
-              <Typography variant='h8'>0</Typography>
-              <Typography variant='h8'>10</Typography>
+              <Typography variant='h8'>{ data.ttl22kgRefill}</Typography>
+              <Typography variant='h8'>{data.ttl22kgCylinder}</Typography>
             </DialogContentText>
             <DialogContentText id="alert-dialog-description1">
             <Typography variant='h8'>45Kg</Typography>
-              <Typography variant='h8'>0</Typography>
-              <Typography variant='h8'>10</Typography>
+              <Typography variant='h8'>{ data.ttl45kgRefill}</Typography>
+              <Typography variant='h8'>{ data.ttl45kgRefill}</Typography>
             </DialogContentText>
             <DialogContentText id="alert-dialog-description1">
             <Typography variant='h8'>50Kg</Typography>
-              <Typography variant='h8'>0</Typography>
-              <Typography variant='h8'>10</Typography>
+              <Typography variant='h8'>{ data.ttl50kgRefill}</Typography>
+              <Typography variant='h8'>{ data.ttl50kgRefill}</Typography>
             </DialogContentText>
           </DialogContent>
           <DialogActions>
@@ -72,27 +72,27 @@ function Accessory( { title, amount ,classname} ) {
           <DialogContent>
             <DialogContentText id="alert-dialog-description1">
             <Typography variant='h8'>Burner:</Typography>
-              <Typography variant='h8'>0</Typography>
+              <Typography variant='h8'>{ data.ttlBurner}</Typography>
               </DialogContentText>
             <DialogContentText id="alert-dialog-description1">
             <Typography variant='h8'>Grill</Typography>
-              <Typography variant='h8'>0</Typography>
+              <Typography variant='h8'>{ data.ttlGrill}</Typography>
               </DialogContentText>
             <DialogContentText id="alert-dialog-description1">
             <Typography variant='h8'>Regulator</Typography>
-              <Typography variant='h8'>0</Typography>
+              <Typography variant='h8'>{ data.ttlRegulator}</Typography>
             </DialogContentText>
             <DialogContentText id="alert-dialog-description1">
             <Typography variant='h8'>HosePipe</Typography>
-              <Typography variant='h8'>0</Typography>
+              <Typography variant='h8'>{ data.ttlHorse_pipe}</Typography>
             </DialogContentText>
             <DialogContentText id="alert-dialog-description1">
             <Typography variant='h8'>Oil</Typography>
-              <Typography variant='h8'>0</Typography>
+              <Typography variant='h8'>{ data.ttlOils}</Typography>
             </DialogContentText>
             <DialogContentText id="alert-dialog-description1">
             <Typography variant='h8'>Others</Typography>
-              <Typography variant='h8'>0</Typography>
+              <Typography variant='h8'>{ data.ttlOthers}</Typography>
             </DialogContentText>
           </DialogContent>
           <DialogActions>
@@ -115,23 +115,23 @@ function Accessory( { title, amount ,classname} ) {
           <DialogContent>
             <DialogContentText id="alert-dialog-description1">
             <Typography variant='h8'>Net Sales:</Typography>
-              <Typography variant='h8'>Kes.0</Typography>
+              <Typography variant='h8'>{"Kes."+data.ttlSale}</Typography>
               </DialogContentText>
             <DialogContentText id="alert-dialog-description1">
             <Typography variant='h8'>Invoice Sale</Typography>
-              <Typography variant='h8'>Kes.0</Typography>
+              <Typography variant='h8'>{"Kes."+data.invoice_sale}</Typography>
               </DialogContentText>
             <DialogContentText id="alert-dialog-description1">
             <Typography variant='h8'>Discounts</Typography>
-              <Typography variant='h8'>Kes.0</Typography>
+              <Typography variant='h8'>{"Kes."+data.totalDiscount}</Typography>
             </DialogContentText>
             <DialogContentText id="alert-dialog-description1">
             <Typography variant='h8'>WholeSale</Typography>
-              <Typography variant='h8'>Kes.0</Typography>
+              <Typography variant='h8'>{"Kes."+data.ttl_ws}</Typography>
             </DialogContentText>
             <DialogContentText id="alert-dialog-description1">
             <Typography variant='h8'>Retail</Typography>
-              <Typography variant='h8'>Kes.0</Typography>
+              <Typography variant='h8'>{"Kes."+data.ttl_rt}</Typography>
             </DialogContentText>
             <DialogContentText id="alert-dialog-description12">
             <Typography variant='h8'></Typography>
@@ -140,32 +140,32 @@ function Accessory( { title, amount ,classname} ) {
             </DialogContentText>
             <DialogContentText id="alert-dialog-description1">
             <Typography variant='h8'>3kg</Typography>
-              <Typography variant='h8'>Kes.0</Typography>
-              <Typography variant='h8'>Kes.0</Typography>
+              <Typography variant='h8'>{data.ttl3kgCylinderSale}</Typography>
+              <Typography variant='h8'>{data.ttl3kgRefillSales}</Typography>
             </DialogContentText>
             <DialogContentText id="alert-dialog-description1">
             <Typography variant='h8'>6kg</Typography>
-              <Typography variant='h8'>Kes.0</Typography>
-              <Typography variant='h8'>Kes.0</Typography>
+              <Typography variant='h8'>{data.ttl6kgCylinderSale}</Typography>
+              <Typography variant='h8'>{data.ttl6kgRefillSales}</Typography>
             </DialogContentText>
             <DialogContentText id="alert-dialog-description1">
             <Typography variant='h8'>13kg</Typography>
-              <Typography variant='h8'>Kes.0</Typography>
-              <Typography variant='h8'>Kes.0</Typography>
+              <Typography variant='h8'>{data.ttl13kgCylinderSale}</Typography>
+              <Typography variant='h8'>{data.ttl13kgRefillSale}</Typography>
             </DialogContentText>
             <DialogContentText id="alert-dialog-description1">
             <Typography variant='h8'>22.5kg</Typography>
-              <Typography variant='h8'>Kes.0</Typography>
-              <Typography variant='h8'>Kes.0</Typography>
+              <Typography variant='h8'>{data.ttl22kgCylinderSale}</Typography>
+              <Typography variant='h8'>{data.ttl22kgRefillSale}</Typography>
             </DialogContentText>
             <DialogContentText id="alert-dialog-description1">
             <Typography variant='h8'>50Kg</Typography>
-              <Typography variant='h8'>Kes.0</Typography>
-              <Typography variant='h8'>Kes.0</Typography>
+              <Typography variant='h8'>{data.ttl50kgCylinderSale}</Typography>
+              <Typography variant='h8'>{data.ttl50kgRefillSale}</Typography>
             </DialogContentText>
             <DialogContentText id="alert-dialog-description1">
             <Typography variant='h8'>Accessory</Typography>
-              <Typography variant='h8'>Kes.0</Typography>
+              <Typography variant='h8'>{data.ttlAccessoriesSale}</Typography>
             </DialogContentText>
           </DialogContent>
           <DialogActions>
@@ -188,15 +188,15 @@ function Accessory( { title, amount ,classname} ) {
           <DialogContent>
             <DialogContentText id="alert-dialog-description13">
             <Typography variant='h8'>Confirmed</Typography>
-              <Typography variant='h8'>Kes.0</Typography>
+              <Typography variant='h8'>{"Kes."+data.ttExpConfirmed}</Typography>
             </DialogContentText>
             <DialogContentText id="alert-dialog-description1">
             <Typography variant='h8'>Pending</Typography>
-              <Typography variant='h8'>Kes.0</Typography>
+              <Typography variant='h8'>{"Kes."+data.ttPending}</Typography>
             </DialogContentText>
             <DialogContentText id="alert-dialog-description12">
             <Typography variant='h8'>Rejected</Typography>
-              <Typography variant='h8'>Kes.0</Typography>
+              <Typography variant='h8'>{"Kes."+data.ttRejects}</Typography>
             </DialogContentText>
           </DialogContent>
           <DialogActions>
