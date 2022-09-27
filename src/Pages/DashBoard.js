@@ -1,5 +1,5 @@
 import { Button, Fab, Typography } from '@mui/material'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Accessory from '../Components/Accessory'
 
 import SummeryCard from '../Components/SummeryCard'
@@ -9,14 +9,28 @@ import Drawer from '../Components/Drawer';
 
 
 function DashBoard() {
+    const [data, setData] = useState();
+ 
     return (
             <ContextConsumer>
             {Context => {
-                console.log( Context.userSession );
+                   useEffect( () => {
+                    const stationID = new FormData();
+                       stationID.append( "stationId", Context.userSession.stationID );
+                       fetch( "https://sabugostores.co.ke/F1jw1PiAZwU-sanacheLPG/php/fetch_home_data_.php", {
+                           method: "POST",
+                           headers: {
+                            
+                           },
+                           body: stationID
+                       } )
+                           .then( res => res.json() )
+                           .then( data => console.log( data ) )
+                           .catch( error => console.log( error ) );
+                },[])
                 return (
                     <div>
-                       
-                        <div className='sumCard'>
+                       <div className='sumCard'>
                             <Drawer fullname={Context.userSession.fullname} />
                             <SummeryCard size={"6kg"} />
                             <SummeryCard size="13kg" />

@@ -20,7 +20,8 @@ function Drawer({fullname}) {
               open={open}
               onClose={()=>setOpen(false)}
               anchor="left"
-              sx={{ maxWidth: "300px" ,width:"50vw"}}
+
+              sx={{ maxWidth: "300px" ,width:"50vw",height:"fitContent"}}
           >
               <Card sx={{width:"100%",bgcolor:"success"}} className="drawerCard"style={{backgroundColor: "#01b764"}}>
                   <CardContent className='x-close'>
