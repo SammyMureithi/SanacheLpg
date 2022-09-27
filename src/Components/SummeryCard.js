@@ -5,7 +5,7 @@ import React from 'react'
 import RefreshIcon from '@mui/icons-material/Refresh';
 import LinearProgress from '@mui/material/LinearProgress';
 
-function SummeryCard({size}) {
+function SummeryCard({size,percentage,gas,empyty}) {
   return (
       <>
           <Card id='summaryCard'  sx={{ width: '75vw' ,maxWidth:"500px",margin:"2rem auto",padding:"10px 2rem"}}>
@@ -14,15 +14,15 @@ function SummeryCard({size}) {
                   <RefreshIcon/>
               </CardContent>
               <CardContent className='topSummary'>
-                  <LinearProgress value={20} variant="determinate" className='progessBar' color='success' />
+                  <LinearProgress value={percentage} variant="determinate" className='progessBar' color='success' />
               </CardContent>
               <CardContent className='topSummary'>
                   <Typography variant='h8' color={"success.main"}>Gas</Typography>
                   <Typography variant='h8' color={"error"}>Empties</Typography>
               </CardContent>
               <CardContent className='topSummary'>
-                  <Typography variant='h10' color={"success.main"}>60</Typography>
-                  <Typography variant='h10' color={"error"}>17</Typography>
+                  <Typography variant='h10' color={"success.main"}>{gas}</Typography>
+                  <Typography variant='h10' color={"error"}>{empyty}</Typography>
               </CardContent>
           </Card>
       </>
