@@ -1,10 +1,11 @@
-import { Fab, Typography } from '@mui/material'
+import { Button, Fab, Typography } from '@mui/material'
 import React from 'react'
 import Accessory from '../Components/Accessory'
 
 import SummeryCard from '../Components/SummeryCard'
 import AddIcon from '@mui/icons-material/Add';
 import { ContextConsumer } from '../Contexts/Context';
+import Drawer from '../Components/Drawer';
 
 
 function DashBoard() {
@@ -14,10 +15,9 @@ function DashBoard() {
                 console.log( Context.userSession );
                 return (
                     <div>
+                       
                         <div className='sumCard'>
-                            <Typography variant='h10'>fullname{Context.userSession.fullname}</Typography>
-                            <br></br>
-                            <Typography variant='h10'> Station{Context.userSession.station}</Typography>
+                            <Drawer fullname={Context.userSession.fullname} />
                             <SummeryCard size={"6kg"} />
                             <SummeryCard size="13kg" />
                         </div>

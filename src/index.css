@@ -47,6 +47,24 @@ code {
 #fab{
   text-align: center;
 }
+.tittle{
+  margin: 0px auto;
+  color: black;
+  justify-content: center;
+  font-weight: 900;
+  text-align: center;
+}
+#drawer{
+ float: left;
+ margin-left: 3rem;
+}
+.drawerCard{
+  background-color: brown;
+  width: 100%;
+}
+.x-close{
+  text-align: right;
+}
 @media only screen and (max-width: 700px) {
   .sumCard{
     display: flex;
