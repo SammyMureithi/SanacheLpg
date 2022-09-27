@@ -3,14 +3,26 @@ import { CardContent } from '@mui/material'
 import { Card } from '@mui/material'
 import React from 'react'
 import RefreshIcon from '@mui/icons-material/Refresh';
+import LinearProgress, { LinearProgressProps } from '@mui/material/LinearProgress';
 
-function SummeryCard() {
+function SummeryCard({size}) {
   return (
       <>
-          <Card>
-              <CardContent>
-                  <Typography variant='h6'>6Kg</Typography>
+          <Card id='summaryCard'  sx={{ width: '75vw' ,maxWidth:"500px",margin:"2rem auto",padding:"10px 2rem"}}>
+              <CardContent className='topSummary'>
+                  <Typography variant='h6'>{size}</Typography>
                   <RefreshIcon/>
+              </CardContent>
+              <CardContent className='topSummary'>
+                  <LinearProgress value={20} variant="determinate" className='progessBar' color='success' />
+              </CardContent>
+              <CardContent className='topSummary'>
+                  <Typography variant='h8' color={"success.main"}>Gas</Typography>
+                  <Typography variant='h8' color={"error"}>Empties</Typography>
+              </CardContent>
+              <CardContent className='topSummary'>
+                  <Typography variant='h10' color={"success.main"}>60</Typography>
+                  <Typography variant='h10' color={"error"}>17</Typography>
               </CardContent>
           </Card>
       </>

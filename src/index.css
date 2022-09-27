@@ -24,3 +24,37 @@ code {
   align-content: space-around;
   padding: 10px auto;
 }
+.topSummary{
+  display: flex;
+  justify-content: space-between;
+}
+.progessBar{
+  margin: 0px auto;
+  height: 2rem;
+  width: 80%;
+  text-align: center;
+}
+.sumCard{
+  display: flex;
+  flex-wrap: wrap;
+}
+.others{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0px auto;
+  padding-left: 10px;
+}
+#fab{
+  text-align: center;
+}
+@media only screen and (max-width: 700px) {
+  .sumCard{
+    display: flex;
+    flex-direction: column;
+  }
+  .others{
+    display: flex;
+    flex-direction: column;
+  }
+
+}
