@@ -3,7 +3,7 @@ import { CardContent } from '@mui/material'
 import { Card } from '@mui/material'
 import React from 'react'
 import RefreshIcon from '@mui/icons-material/Refresh';
-import LinearProgress, { LinearProgressProps } from '@mui/material/LinearProgress';
+import LinearProgress from '@mui/material/LinearProgress';
 
 function SummeryCard({size}) {
   return (

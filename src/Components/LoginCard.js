@@ -11,7 +11,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 function LoginCard() {
-    const [navigateTo, setNavigate] = useState( "/" );
+    
     const [response, setResponsonse] = useState( {
         error: null,
         message:""
@@ -39,22 +39,23 @@ function LoginCard() {
         } )
             .then( res => res.json() )
             .then( data => {
-                console.log(data)
-                setResponsonse(data)
-            })  
+                setResponsonse( data )
+                if ( data.error === false ) {
+                    window.location.href = "/DashBoard";
+                }
+            }
+                )  
             .catch( error => console.log( error ) );
         if ( response.error === false ) {
             console.log( response.error );
             console.log( "Login Successfull" )
-            setNavigate( "/DashBoard" );
-            
+            window.location.href = "/DashBoard";
         }
         else {
             console.log( response.error );
             console.log("Not Loggeded in")
             return null;
         }
-        navigate( navigateTo );
     }
     const newToast = response.error ? (
         <Stack spacing={2} sx={{ width: '100%' }}>
@@ -94,7 +95,7 @@ function LoginCard() {
                   </Grid>
       </CardContent>
       <CardActions>
-        <Button variant="contained" color='primary' id='loginBtn' onClick={Login} to={navigateTo}>LOGIN</Button>
+        <Button variant="contained" color='primary' id='loginBtn' onClick={Login}>LOGIN</Button>
               </CardActions>
               <CardContent>
                   <Button variant='text'>Forgot Password</Button>
