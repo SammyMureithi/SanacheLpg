@@ -9,6 +9,8 @@ import Drawer from '../Components/Drawer';
 
 
 function DashBoard() {
+    let userDash = sessionStorage.getItem( "username" );
+    console.log( "Username" + userDash );
     const [data, setData] = useState( {
         ttl6kgRefill: 280,
         ttl13kgRefill: 126,
@@ -62,7 +64,7 @@ function DashBoard() {
     const [stationId, setStationId] = useState("");
     useEffect( () => {
         const stationID = new FormData();
-           stationID.append( "stationId",stationId);
+           stationID.append( "stationId", sessionStorage.getItem("stationID"));
            fetch( "https://sabugostores.co.ke/F1jw1PiAZwU-sanacheLPG/php/fetch_home_data_.php", {
                method: "POST",
                headers: {
@@ -76,15 +78,16 @@ function DashBoard() {
                } )
                .catch( error => console.log( error ) );
     }, [stationId] )
+    
  
     return (
             <ContextConsumer>
             {Context => {
-                setStationId(Context.userSession.stationID)
+                setStationId(sessionStorage.getItem("stationID"))
                 return (
                     <div>
                        <div className='sumCard'>
-                            <Drawer fullname={Context.userSession.fullname} />
+                            <Drawer/>
                             <SummeryCard size={"6kg"} percentage={data.ttl6kgGasPercentage} gas={data.ttl6kgRefill}
                                 empyty={data.ttl6kgCylinder}  />
                             <SummeryCard size="13kg" percentage={data.tt13kgGasPercentage} gas={data.ttl13kgRefill}

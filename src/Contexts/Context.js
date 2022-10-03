@@ -1,9 +1,7 @@
 import React, { useState } from 'react'
 const { Consumer, Provider } = React.createContext();
 function Context( props ) {
-    const [userSession, setUserSession] = useState( {
-       
-    });
+    const [userSession, setUserSession] = useState({});
     const [errorResponse, setErrorResponse] = useState( {
         error: null,
         message:""
@@ -33,8 +31,26 @@ function Context( props ) {
                 
                     if ( data.error === false ) {
                         console.log( "Hello" );
-                        sessionStorage.setItem( "userDatails", data.username );
+                        //let's save our data in session then set them to State
+                        /**
+                         * fullname
+                         * role
+                         * role2
+                         * station
+                         * stationID
+                         * userID
+                         * username
+                         */
+                        sessionStorage.setItem( "stationID", data.stationID );
+                        sessionStorage.setItem( "fullname", data.fullname );
+                        sessionStorage.setItem( "role2", data.role2 );
+                        sessionStorage.setItem( "station", data.station );
+                        sessionStorage.setItem( "userID", data.userID );
+                        sessionStorage.setItem( "username", data.username );
+                        //let get all the session data 
+                    
                         setUserSession( data )
+
                         //window.location.href = "/DashBoard";
                     }
                     setErrorResponse( data );
@@ -42,10 +58,8 @@ function Context( props ) {
                     )  
             .catch( error => console.log( error ) );
     }
-    console.log( userSession );
-     const userDetails = sessionStorage.getItem( "userDatails" );
-     console.log("Session")
-     console.log( userDetails );
+  
+    console.log("//////"+ sessionStorage.getItem("stationID") );
   return (
       <Provider value={
           {

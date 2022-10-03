@@ -58,7 +58,8 @@ function Drawer({fullname}) {
                       </ListItem>
                       <Divider />
                       <Typography variant='h7'>
-                       Fullname:{fullname}
+                          {sessionStorage.getItem( "username" )}
+                          ({sessionStorage.getItem("station")})
                       </Typography>
                   </CardContent>
              </Card>
