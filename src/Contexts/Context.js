@@ -59,7 +59,7 @@ function Context( props ) {
             .catch( error => console.log( error ) );
     }
   
-    console.log("//////"+ sessionStorage.getItem("stationID") );
+   
   return (
       <Provider value={
           {

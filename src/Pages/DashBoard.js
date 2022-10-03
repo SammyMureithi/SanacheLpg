@@ -6,6 +6,7 @@ import SummeryCard from '../Components/SummeryCard'
 import AddIcon from '@mui/icons-material/Add';
 import { ContextConsumer } from '../Contexts/Context';
 import Drawer from '../Components/Drawer';
+import LogOut from '../Components/LogOut';
 
 
 function DashBoard() {
@@ -86,8 +87,11 @@ function DashBoard() {
                 setStationId(sessionStorage.getItem("stationID"))
                 return (
                     <div>
-                       <div className='sumCard'>
-                            <Drawer/>
+                        <div className='sumCard'>
+                            <div className='topDashboard'>
+                            <Drawer />
+                            <LogOut/>
+                            </div>
                             <SummeryCard size={"6kg"} percentage={data.ttl6kgGasPercentage} gas={data.ttl6kgRefill}
                                 empyty={data.ttl6kgCylinder}  />
                             <SummeryCard size="13kg" percentage={data.tt13kgGasPercentage} gas={data.ttl13kgRefill}
