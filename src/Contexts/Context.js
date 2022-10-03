@@ -33,6 +33,7 @@ function Context( props ) {
                 
                     if ( data.error === false ) {
                         console.log( "Hello" );
+                        sessionStorage.setItem( "userDatails", data.username );
                         setUserSession( data )
                         //window.location.href = "/DashBoard";
                     }
@@ -42,6 +43,9 @@ function Context( props ) {
             .catch( error => console.log( error ) );
     }
     console.log( userSession );
+     const userDetails = sessionStorage.getItem( "userDatails" );
+     console.log("Session")
+     console.log( userDetails );
   return (
       <Provider value={
           {
