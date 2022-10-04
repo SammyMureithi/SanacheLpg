@@ -1,13 +1,14 @@
-import { Card, CardContent, Typography } from '@mui/material'
+import { Card, CardContent, Divider, Typography } from '@mui/material'
 import React from 'react'
 
 function CustomerList({name,account}) {
   return (
       <>
+          <Divider/>
           <Card>
               <CardContent>
                   <Typography variant='h5'>Name:{name}</Typography>
-                  <Typography variant='h6'>Account:{account}</Typography>
+                  <Typography variant='h6'>Debt:{account}</Typography>
               </CardContent>
           </Card>
           
