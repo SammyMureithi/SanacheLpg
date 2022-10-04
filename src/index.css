@@ -89,7 +89,7 @@ code {
 .topDashboard{
   display: flex;
   justify-content: space-between;
-  margin-top: 2rem;
+  margin-top: 0.92rem;
 }
 .topDashboard :nth-child(2){
   float: right;
@@ -99,7 +99,11 @@ code {
   display: flex;
   flex-direction: column;
 }
-
+.customerPageTop{
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+}
 @media only screen and (max-width: 700px) {
   .sumCard{
     display: flex;
@@ -109,7 +113,17 @@ code {
     display: flex;
     flex-direction: column;
   }
+  .customerPageTop{
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .customerPageTop button{
+    margin: 1rem;
+    width: fit-content;
+  }
   
-  
-
 }

@@ -10,8 +10,10 @@ import { ListItemButton } from '@mui/material';
 import { ListItemText } from '@mui/material';
 import { Divider } from '@mui/material';
 import FileCopyIcon from '@mui/icons-material/FileCopy';
+import { useNavigate } from 'react-router-dom';
 function Drawer({fullname}) {
     const [open, setOpen] = useState( false );
+    const navigate = useNavigate();
   return (
       <div >
           <MenuIcon onClick={()=>setOpen(prevState => !prevState)} id="drawer"></MenuIcon>
@@ -38,12 +40,12 @@ function Drawer({fullname}) {
                   </CardContent>
                   <CardContent style={{ backgroundColor: "white" }}>
                       <Divider />
-                          <ListItem>
+                          <ListItem onClick={()=>navigate("/Customers")}>
                               <ListItemButton>
                                   <ListItemIcon>
                                       <SupervisedUserCircleIcon />
                                   </ListItemIcon>
-                                  <ListItemText primary="User" />
+                                  <ListItemText primary="Customers" />
                               </ListItemButton>
                       </ListItem>
                       <Divider />

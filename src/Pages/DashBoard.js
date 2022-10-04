@@ -11,7 +11,7 @@ import LogOut from '../Components/LogOut';
 
 function DashBoard() {
     let userDash = sessionStorage.getItem( "username" );
-    console.log( "Username" + userDash );
+  
     const [data, setData] = useState( {
         ttl6kgRefill: 280,
         ttl13kgRefill: 126,
