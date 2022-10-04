@@ -32,7 +32,12 @@ function CustomersPages() {
             return (
                 filteredData.map( element => {
                    return (
-                       <CustomerList key={element.customer_id} name={element.customer_name} account={element.debt}/>
+                       <CustomerList
+                           key={element.customer_id}
+                           name={element.customer_name}
+                           account={element.debt}
+                           id={element.customer_id}
+                       />
                    )
                })
            )
