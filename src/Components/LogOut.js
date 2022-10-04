@@ -1,13 +1,40 @@
 import React, { useState } from 'react'
 import LogoutIcon from '@mui/icons-material/Logout';
 import { Dialog,DialogContent,DialogTitle,DialogContentText,DialogActions, Button } from '@mui/material'
+import { useNavigate } from 'react-router-dom';
 function LogOut() {
     const [open, setOpen] = useState( false );
-    function handleClose() {
+    const navigate = useNavigate();
+    const user_id = new FormData();
+    user_id.append( "user_id", sessionStorage.getItem("userID") );
+    console.log( user_id );
+    function handleClose1() {
+        fetch( "https://sabugostores.co.ke/F1jw1PiAZwU-sanacheLPG/php/logout.php", {
+            method: "POST",
+            headers: {
+                
+            },
+            body: user_id
+        })
+            .then( res => {
+                if ( !res.ok ) {
+                    console.log( "LogOut Unsuccessful" )
+                }
+                return res;
+            } )
+            .then( res => res.json() )
+            .then( data => console.log( data ) )
+            .catch( error => console.log( error ) );
+        navigate( "/" );
+        sessionStorage.clear();
         setOpen( false );
     }
     function handleClickOpen() {
+       
         setOpen( true );
+    }
+    function handleClose() {
+        setOpen( false );
     }
   return (
       <>
@@ -24,8 +51,8 @@ function LogOut() {
                   </DialogContentText>
         </DialogContent>
               <DialogActions>
-                  <Button onClick={handleClose}>Cancel</Button>
-                  <Button onClick={handleClose} variant="contained">Logout</Button>
+                  <Button onClick={()=> setOpen(false)}>Cancel</Button>
+                  <Button onClick={handleClose1} variant="contained">Logout</Button>
         </DialogActions>
         </Dialog>
       </>
