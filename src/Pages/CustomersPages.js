@@ -1,5 +1,6 @@
 import { Button ,TextField} from '@mui/material'
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import CustomerList from '../Components/CustomerList'
 
 function CustomersPages() {
@@ -8,6 +9,7 @@ function CustomersPages() {
     function handleSearchChange(e) {
         setSearch( e.target.value );
     }
+    const navigate = useNavigate();
     useEffect( () => {
         fetch( "https://sabugostores.co.ke/F1jw1PiAZwU-sanacheLPG/php/selectCustomers.php" )
             .then( res => {
@@ -46,13 +48,13 @@ function CustomersPages() {
   return (
       <>
           <div className='customerPageTop'>
-              <Button variant='contained'>Back</Button>
+              <Button variant='contained' onClick={()=>navigate(-1)}>Back</Button>
               <TextField label="Search"
                   variant="outlined"
                   name='search' 
                   onChange={handleSearchChange}
                   type="text" />
-              <Button variant='outlined'>Customer Summary</Button>
+              <Button variant='outlined' onClick={()=>navigate("/Customers/CustomerSummery")}>Customer Summary</Button>
           </div>
              {res()}
       </>
