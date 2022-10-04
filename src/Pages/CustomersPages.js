@@ -3,7 +3,11 @@ import React, { useEffect, useState } from 'react'
 import CustomerList from '../Components/CustomerList'
 
 function CustomersPages() {
-    const [customers, setCustomers] = useState(null);
+    const [customers, setCustomers] = useState( null );
+    const [search, setSearch] = useState( "" );
+    function handleSearchChange(e) {
+        setSearch( e.target.value );
+    }
     useEffect( () => {
         fetch( "https://sabugostores.co.ke/F1jw1PiAZwU-sanacheLPG/php/selectCustomers.php" )
             .then( res => {
@@ -21,9 +25,10 @@ function CustomersPages() {
     }, [] )
     //console.log( customers );
    const res= function setCustomersList() {
-        if ( customers !== null ) {
+       if ( customers !== null ) {
+           const filteredData = customers.filter( customer => customer.customer_name.toUpperCase().includes( search.toUpperCase() ) );
             return (
-                customers.map( element => {
+                filteredData.map( element => {
                    return (
                        <CustomerList key={element.customer_id} name={element.customer_name} account={element.debt}/>
                    )
@@ -42,8 +47,10 @@ function CustomersPages() {
       <>
           <div className='customerPageTop'>
               <Button variant='contained'>Back</Button>
-          <TextField label="Search" variant="outlined"
-              name='search' 
+              <TextField label="Search"
+                  variant="outlined"
+                  name='search' 
+                  onChange={handleSearchChange}
                   type="text" />
               <Button variant='outlined'>Customer Summary</Button>
           </div>
