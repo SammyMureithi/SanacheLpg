@@ -1,6 +1,9 @@
 import { Autocomplete, Button, Card, CardContent, Dialog, DialogContent, FormControl, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import SearchProducts from '../Components/SearchProducts';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+
 
 function SalesPage() {
     const navigate = useNavigate();
@@ -11,7 +14,24 @@ function SalesPage() {
     const [salesType, setSalesType] = useState();
     const [value, setValue] = React.useState ("");
     const [inputValue, setInputValue] = React.useState( '' );
-    const options = ['Afri Gas 6kg', 'K-gas 6kg','Pro-Gas 13kg','Mwanga 13kg'];
+    const options = ['Afri-Gas 6kg', 'K-gas 6kg', 'Pro-Gas 13kg', 'Mwanga 13kg'];
+    const products = [
+        {
+            productName: "Afri-Gas 6kg",
+            quantity: "20",
+            price: "2300"
+        },
+        { 
+            productName: "Pro-Gas 13kg",
+            quantity: "20",
+            price: 2300
+        },
+        { 
+            productName: "K-Gas 13kg",
+            quantity: "20",
+            price: "2300"
+        }
+    ]
     function handleCustomerNameChange( e ) {
         setCustomerName( e.target.value );
     }
@@ -53,13 +73,24 @@ function SalesPage() {
               <Button onClick={() => navigate( -1 )} variant="outlined">Back</Button>
               
               <Autocomplete
-                  value={value}
-                  inputValue={inputValue}
-                  onInputChange={( event, newInputValue ) => { setInputValue( newInputValue ) }}
+                  variant="outlined"
                   id="controllable-states-demo"
-                  options={options}
+                  options={products}
                   sx={{ width: 300 }}
-                  renderInput={( params ) => <TextField {...params} label="Search Product" />}
+                  renderInput={( params ) => <TextField {...params} label="Search Product"  variant='outlined'/>}
+                  getOptionLabel={( product ) => `${product.productName}: ${product.quantity}`}
+                  renderOption={( option ) => { 
+                      return (
+                          <Card key={option.productName}>
+                              <CardContent className="searchProductSale">
+                                  <Typography variant='h6'>{`Name: ${option.productName}`}</Typography>
+                                  <Typography variant='h8'>{`Price:${option.price}`}</Typography>
+                                  <Typography variant='h7'>{`In-Stock: ${option.quantity}`}</Typography>
+                                  <AddShoppingCartIcon className='cartAdd'></AddShoppingCartIcon>
+                              </CardContent>
+                          </Card>
+                      )
+                  } }
       />
           </div>
           <div className='products'>

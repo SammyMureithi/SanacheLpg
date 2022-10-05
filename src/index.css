@@ -125,6 +125,17 @@ code {
 .salesType button{
   margin: 10px 15px;
 }
+.cartAdd{
+  justify-content: center;
+  align-self: center;
+  border: solid green 2px;
+  padding: 10px 19px;
+  background-color: green;
+}
+.searchProductSale{
+  display: flex;
+  flex-direction: column;
+}
 @media only screen and (max-width: 700px) {
   .sumCard{
     display: flex;
