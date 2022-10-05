@@ -104,6 +104,11 @@ code {
   display: flex;
   justify-content: space-between;
 }
+.close{
+  border: solid black 2px;
+  border-radius: 50%;
+  float: right;
+}
 @media only screen and (max-width: 700px) {
   .sumCard{
     display: flex;

@@ -5,6 +5,11 @@ import DashBoard from './Pages/DashBoard';
 import CustomersPages from './Pages/CustomersPages';
 import CustomerSummaryPages from './Pages/CustomerSummaryPages';
 import DetailedCustomerPage from './Pages/DetailedCustomerPage';
+import SalesPage from './Pages/SalesPage';
+import TransferPage from './Pages/TransferPage';
+import LPO from './Pages/LPO';
+import ExpensesPage from './Pages/ExpensesPage';
+import DepositPage from './Pages/DepositPage';
 
 function App() {
   return (
@@ -14,7 +19,12 @@ function App() {
         <Route path='/DashBoard' element={<DashBoard />} />
         <Route path='/Customers' element={<CustomersPages />} />
         <Route path='/Customers/CustomerSummery' element={<CustomerSummaryPages />} />
-        <Route path='/Customers/:CustomerName/:CustomerId' element={<DetailedCustomerPage/>}/>
+        <Route path='/Customers/:CustomerName/:CustomerId' element={<DetailedCustomerPage />} />
+        <Route path='/Sales' element={<SalesPage />} />
+        <Route path='/Transfers' element={<TransferPage />} />
+        <Route path='/LPO' element={<LPO />} />
+        <Route path='/Expenses' element={<ExpensesPage />} />
+        <Route path='/Deposit' element={<DepositPage/>}/>
       </Routes>
     </div>
   );

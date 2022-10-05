@@ -1,17 +1,25 @@
-import { Button, Fab, Typography } from '@mui/material'
+import { Button, Fab, ListItem, ListItemButton, ListItemIcon, Typography,ListItemText } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import Accessory from '../Components/Accessory'
-
+import { Dialog,DialogContent,DialogTitle,DialogContentText,DialogActions } from '@mui/material'
 import SummeryCard from '../Components/SummeryCard'
 import AddIcon from '@mui/icons-material/Add';
 import { ContextConsumer } from '../Contexts/Context';
 import Drawer from '../Components/Drawer';
 import LogOut from '../Components/LogOut';
+import FileCopyIcon from '@mui/icons-material/FileCopy';
+import CloseIcon from '@mui/icons-material/Close';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import PublishedWithChangesIcon from '@mui/icons-material/PublishedWithChanges';
+import AssuredWorkloadIcon from '@mui/icons-material/AssuredWorkload';
+import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
+import { useNavigate } from 'react-router-dom'
 
 
 function DashBoard() {
     let userDash = sessionStorage.getItem( "username" );
-  
+    const [open, setOpen] = useState( false );
+ 
     const [data, setData] = useState( {
         ttl6kgRefill: 280,
         ttl13kgRefill: 126,
@@ -79,7 +87,13 @@ function DashBoard() {
                } )
                .catch( error => console.log( error ) );
     }, [stationId] )
-    
+    function handleClose() {
+        setOpen(false)
+    }
+    function handleOpen() {
+        setOpen(true)
+    }
+    const navigate = useNavigate();
  
     return (
             <ContextConsumer>
@@ -103,9 +117,58 @@ function DashBoard() {
                             <Accessory title={"Todays Sales"} amount={"Kes."+data.ttlSale}  classname="TodaysSales" data={ data}/>
                             <Accessory title={"Todays Expenses"} amount={"Kes."+ data.ttExpConfirmed}  classname="TodaysExpenses" data={ data}/>
                         </div>
-                        <Fab color="primary" aria-label="add" id='fab'>
+                        <Fab color="primary" aria-label="add" id='fab' onClick={handleOpen}>
                             <AddIcon />
                         </Fab>
+                        <Dialog
+                            open={open}
+                            onClose={handleClose}
+                            aria-labelledby="alert-dialog-title"
+                            aria-describedby="alert-dialog-description">
+                            <DialogContent>
+                                <CloseIcon className='close' onClick={() => setOpen( false )} />
+                                <ListItem onClick={()=>navigate("/Sales")}>
+                                    <ListItemButton>
+                                        <ListItemIcon>
+                                            <ShoppingCartIcon />
+                                        </ListItemIcon>
+                                        <ListItemText primary="Sale" />
+                                    </ListItemButton>
+                                </ListItem>
+                                <ListItem onClick={()=>navigate("/Transfers")}>
+                                    <ListItemButton>
+                                        <ListItemIcon>
+                                            <PublishedWithChangesIcon />
+                                        </ListItemIcon>
+                                        <ListItemText primary="Transfers" />
+                                    </ListItemButton>
+                                </ListItem>
+                                <ListItem onClick={()=>navigate("/LPO")}>
+                                    <ListItemButton>
+                                        <ListItemIcon>
+                                            <FileCopyIcon />
+                                        </ListItemIcon>
+                                        <ListItemText primary="LPO" />
+                                    </ListItemButton>
+                                </ListItem>
+                                <ListItem onClick={()=>navigate("/Expenses")}>
+                                    <ListItemButton>
+                                        <ListItemIcon>
+                                            <MonetizationOnIcon />
+                                        </ListItemIcon>
+                                        <ListItemText primary="Expenses" />
+                                    </ListItemButton>
+                                </ListItem>
+                                <ListItem onClick={()=>navigate("/Deposit")}>
+                                    <ListItemButton>
+                                        <ListItemIcon>
+                                            <AssuredWorkloadIcon />
+                                        </ListItemIcon>
+                                        <ListItemText primary="Deposit" />
+                                    </ListItemButton>
+                                </ListItem>
+                            </DialogContent>
+                        </Dialog>
                     </div>
                     )
                 }}

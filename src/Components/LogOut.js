@@ -7,7 +7,7 @@ function LogOut() {
     const navigate = useNavigate();
     const user_id = new FormData();
     user_id.append( "user_id", sessionStorage.getItem("userID") );
-    console.log( user_id );
+   
     function handleClose1() {
         fetch( "https://sabugostores.co.ke/F1jw1PiAZwU-sanacheLPG/php/logout.php", {
             method: "POST",
