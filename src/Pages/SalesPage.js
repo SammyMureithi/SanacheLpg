@@ -75,11 +75,13 @@ function SalesPage() {
               <Autocomplete
                   variant="outlined"
                   id="controllable-states-demo"
+                  autoComplete="true"
                   options={products}
                   sx={{ width: 300 }}
                   renderInput={( params ) => <TextField {...params} label="Search Product"  variant='outlined'/>}
-                  getOptionLabel={( product ) => `${product.productName}: ${product.quantity}`}
-                  renderOption={( option ) => { 
+                  getOptionLabel={( option ) => `${option.productName}: ${option.price}`}
+                  value={products}
+                  renderOption={(props, option) => { 
                       return (
                           <Card key={option.productName}>
                               <CardContent className="searchProductSale">
