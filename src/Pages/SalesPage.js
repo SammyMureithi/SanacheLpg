@@ -77,9 +77,10 @@ function SalesPage() {
                   id="controllable-states-demo"
                   autoComplete="true"
                   options={products}
+                  autoHighlight
                   sx={{ width: 300 }}
                   renderInput={( params ) => <TextField {...params} label="Search Product"  variant='outlined'/>}
-                  getOptionLabel={( option ) => `${option.productName}: ${option.price}`}
+                  getOptionLabel={(option ) => option.productName}
                   value={products}
                   renderOption={(props, option) => { 
                       return (
