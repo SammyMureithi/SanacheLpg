@@ -1,12 +1,17 @@
-import { Button, Card, CardContent, FormControl, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
+import { Autocomplete, Button, Card, CardContent, Dialog, DialogContent, FormControl, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 function SalesPage() {
     const navigate = useNavigate();
+    const [open,setOpen]=useState(true)
     const [search, setSearch] = useState( "" );
     const [customerName, setCustomerName] = useState( "Customer" );
     const [payment, setPayment] = useState();
+    const [salesType, setSalesType] = useState();
+    const [value, setValue] = React.useState ("");
+    const [inputValue, setInputValue] = React.useState( '' );
+    const options = ['Afri Gas 6kg', 'K-gas 6kg','Pro-Gas 13kg','Mwanga 13kg'];
     function handleCustomerNameChange( e ) {
         setCustomerName( e.target.value );
     }
@@ -17,21 +22,55 @@ function SalesPage() {
     function handleChange( e ) {
        setPayment( e.target.value)
     }
+    function handleClose() {
+        setOpen( false );
+        navigate( -1 );
+    }
+    function handleSaleTypeClick( e ) {
+        setSalesType( e.target.name );
+        setOpen(false)
+    }
+    console.log( value );
+   
   return (
       <>
+          <Dialog
+              open={open}
+              onClose={handleClose}
+              aria-labelledby="alert-dialog-title"
+              aria-describedby="alert-dialog-description">
+              <DialogContent className='salesType'>
+                  <Button variant="outlined" name="Retail" onClick={handleSaleTypeClick}>Retail</Button>
+                  <Button variant="outlined" name="Wholesale" onClick={handleSaleTypeClick}>Wholesale</Button>
+                  <Button variant="outlined" name="Vender" onClick={handleSaleTypeClick}>Vendor</Button>
+                  <Button variant="outlined" name="return_sales" onClick={handleSaleTypeClick}>Return Sales</Button>
+                  <Button variant="outlined" name="rePrintReceipt" onClick={handleSaleTypeClick}>Re-Print Receipt</Button>
+                  <Button onClick={()=>navigate(-1)} variant="contained" color='error'>Cancel</Button>
+              </DialogContent>
+              
+          </Dialog>
           <div className='customerPageTop'>
               <Button onClick={() => navigate( -1 )} variant="outlined">Back</Button>
-              <TextField label="Search"
-                  variant="outlined"
-                  name='search' 
-                  onChange={handleSearchChange}
-                  type="text" />
+              
+              <Autocomplete
+                  value={value}
+                  inputValue={inputValue}
+                  onInputChange={( event, newInputValue ) => { setInputValue( newInputValue ) }}
+                  id="controllable-states-demo"
+                  options={options}
+                  sx={{ width: 300 }}
+                  renderInput={( params ) => <TextField {...params} label="Search Product" />}
+      />
           </div>
           <div className='products'>
               
           </div>
           <div>
               <Card className='salesCard'>
+              <CardContent id="salesCardContent">
+                      <Typography variant='h6'>SalesType:</Typography>
+                      <Typography variant='h6'>{salesType!==null?salesType:null}</Typography>
+                  </CardContent>
                   <CardContent id="salesCardContent">
                       <Typography variant='h6'>Customer Name:</Typography>
                       <TextField label="Search" variant="filled"
@@ -41,7 +80,8 @@ function SalesPage() {
                   </CardContent>
                   <CardContent id="salesCardContent">
                       <Typography variant='h6'>Discount:</Typography>
-                      <TextField label="Search" variant="filled" name='Customer' onChange={handleCustomerNameChange} type="text" />
+                      <TextField label="Discount" variant="filled" name='Discount'
+                          onChange={handleCustomerNameChange} type="number" />
                   </CardContent>
                   <CardContent id="salesCardContent">
                       <Typography variant='h6'>Payment:</Typography>
@@ -70,7 +110,7 @@ function SalesPage() {
                   <CardContent id="salesCardContent">
                       <Button variant="contained" color="error">Abort</Button>
                       <Button variant="contained">Process</Button>
-                      <Button>Print</Button>
+                      <Button variant="outlined" color='success'>Print</Button>
                   </CardContent>
               </Card>
           </div>
