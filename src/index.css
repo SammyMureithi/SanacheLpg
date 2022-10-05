@@ -109,6 +109,14 @@ code {
   border-radius: 50%;
   float: right;
 }
+.salesCard{
+  max-width: 400px;
+  margin: 0px auto;
+}
+#salesCardContent{
+  display: flex;
+  justify-content: space-between;
+}
 @media only screen and (max-width: 700px) {
   .sumCard{
     display: flex;
