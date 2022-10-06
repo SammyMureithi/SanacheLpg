@@ -1,15 +1,18 @@
-import { Button, Card, CardContent, Chip, ThemeProvider, Typography } from '@mui/material';
+import { Button, Card, CardContent, Chip, TextField, ThemeProvider, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import AccountBalanceIcon from '@mui/icons-material/AccountBalance';;
+import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
+import DateTimePickerComponent from '../Components/DateTimePicker';
 
 
 function DetailedCustomerPage() {
-  const {CustomerId } = useParams();
+  const { CustomerId } = useParams();
+  const [date, setDate] = useState( new Date() );
   const [customerDetail, setCustomerDetail] = useState(
     {customer_name: "",
     customer_phone:""}
   );
+  
   useEffect( () => {
     const customer_id = new FormData();
     customer_id.append( "customer_id", CustomerId );
@@ -44,6 +47,7 @@ function DetailedCustomerPage() {
           </div>
         </CardContent>
       </Card>
+      
     </>
     
     
