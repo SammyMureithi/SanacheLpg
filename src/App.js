@@ -10,6 +10,7 @@ import TransferPage from './Pages/TransferPage';
 import LPO from './Pages/LPO';
 import ExpensesPage from './Pages/ExpensesPage';
 import DepositPage from './Pages/DepositPage';
+import CustomerAccount from './Pages/CustomerAccount';
 
 function App() {
   return (
@@ -20,11 +21,13 @@ function App() {
         <Route path='/Customers' element={<CustomersPages />} />
         <Route path='/Customers/CustomerSummery' element={<CustomerSummaryPages />} />
         <Route path='/Customers/:CustomerName/:CustomerId' element={<DetailedCustomerPage />} />
+        <Route path='/Customers/:CustomerName/:CustomerId/Account' element={<CustomerAccount/>}/>
         <Route path='/Sales' element={<SalesPage />} />
         <Route path='/Transfers' element={<TransferPage />} />
         <Route path='/LPO' element={<LPO />} />
         <Route path='/Expenses' element={<ExpensesPage />} />
-        <Route path='/Deposit' element={<DepositPage/>}/>
+        <Route path='/Deposit' element={<DepositPage />} />
+        
       </Routes>
     </div>
   );

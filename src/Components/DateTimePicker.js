@@ -1,21 +1,19 @@
 import React, { useState } from 'react'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { DesktopDateTimePicker, LocalizationProvider } from '@mui/x-date-pickers-pro';
+import { DesktopDatePicker, DesktopDateTimePicker, LocalizationProvider } from '@mui/x-date-pickers-pro';
 import { TextField } from '@mui/material';
+import dayjs, { Dayjs } from 'dayjs';
 
 function DateTimePickerComponent() {
-  const [currentDate, setCurrentData] = useState( new Date() );
-  function handleChange( e ) {
-    setCurrentData( e.target.value );
-  }
+  const [value, setValue] = React.useState (new Date());
   return (
     <div>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <DesktopDateTimePicker
+      <DesktopDatePicker
             label="Date desktop"
             inputFormat="MM/DD/YYYY"
-            value={currentDate}
-            onChange={handleChange}
+            value={value}
+            onChange={(newValue)=> setValue(newValue)}
             renderInput={(params) => <TextField {...params} />}/>
       </LocalizationProvider> 
     </div>
