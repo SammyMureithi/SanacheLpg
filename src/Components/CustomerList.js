@@ -7,7 +7,6 @@ function CustomerList( { name, account,id } ) {
   return (
       <>
           <Divider />
-          
           <Card onClick={()=>navigate(`/Customers/${name}/${id}`)}>
               <CardContent>
                   <Typography variant='h5'>Name:{name}</Typography>

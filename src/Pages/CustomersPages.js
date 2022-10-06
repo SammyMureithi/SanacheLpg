@@ -1,4 +1,4 @@
-import { Button ,TextField} from '@mui/material'
+import { Button ,Card,CardContent,TextField} from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import CustomerList from '../Components/CustomerList'
@@ -61,7 +61,15 @@ function CustomersPages() {
                   type="text" />
               <Button variant='outlined' onClick={()=>navigate("/Customers/CustomerSummery")}>Customer Summary</Button>
           </div>
-             {res()}
+          <div>
+              <Card className='customersCard'>
+                  <CardContent>
+                  {res()}
+                  </CardContent>
+              </Card>
+          
+          </div>
+           
       </>
   )
 }
