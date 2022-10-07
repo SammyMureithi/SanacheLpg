@@ -155,7 +155,30 @@ code {
   margin: 10px auto;
   width: fit-content;
 }
+.customerAccountTableFooter{
+  align-self: flex-end;
+  text-align: right;
+  align-items: flex-end;
+}
+.customerAccountCard{
+  background-color: green;
+  width: 70vw;
+  max-width: 350px;
+  margin: 1rem;
+  border: solid green 2px;
+  border-radius: 1rem;
+}
+.topCustomerAccountState{
+  display: flex;
+  justify-content: space-between;
+}
+.topCustomerAccountState button{
+  margin: 2rem;
+}
 @media only screen and (max-width: 700px) {
+  .customerAccountCard{
+    margin: 10px auto;
+  }
   .sumCard{
     display: flex;
     flex-direction: column;
@@ -174,6 +197,14 @@ code {
   }
   .customerPageTop button{
     margin: 1rem;
+    width: fit-content;
+  }
+  .topCustomerAccountState{
+    margin: 0px auto;
+    display: flex;
+    flex-direction: column;
+  }
+  .topCustomerAccountState button{
     width: fit-content;
   }
   

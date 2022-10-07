@@ -48,7 +48,7 @@ function DetailedCustomerPage() {
           </div>
         </CardContent>
       </Card>
-      <DateTimePickerComponent/>
+      
     </>
     
     
