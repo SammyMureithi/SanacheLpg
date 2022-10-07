@@ -13,7 +13,7 @@ function SummeryCard({size,percentage,gas,empyty}) {
                   <Typography variant='h6'>{size}</Typography>
                   <RefreshIcon/>
               </CardContent>
-              <CardContent className='topSummary'>
+              <CardContent className='topSummary1'>
                   <LinearProgress value={percentage} variant="determinate" className='progessBar' color='success' />
               </CardContent>
               <CardContent className='topSummary'>

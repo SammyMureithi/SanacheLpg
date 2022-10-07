@@ -13,14 +13,15 @@ import { ContextConsumer } from '../Contexts/Context'
 
 function LoginCard() {
     const navigate = useNavigate();
+    
     return (
       <ContextConsumer>
             {context => {
                 if(context.errorResponse.error === false){navigate( "/DashBoard" )} 
                 const newToast = context.errorResponse.error ? (
                     <Stack spacing={2} sx={{ width: '100%' }}>
-                        <Snackbar open={true} autoHideDuration={2000} >
-                            <Alert severity="error" sx={{ width: '100%' }}>
+                        <Snackbar open={context.open} autoHideDuration={2000}  onClose={context.handlClose} >
+                            <Alert severity="error" sx={{ width: '100%' }}  onClose={context.handlClose} >
                                 {context.errorResponse.message}
                             </Alert>
                         </Snackbar>
@@ -28,8 +29,8 @@ function LoginCard() {
                 ) :
                     (
                         <Stack spacing={2} sx={{ width: '100%' }}>
-                            <Snackbar open={true} autoHideDuration={2000} >
-                                <Alert severity="success" sx={{ width: '100%' }}>
+                            <Snackbar open={context.open} autoHideDuration={2000} onClose={context.handlClose} >
+                                <Alert severity="success" sx={{ width: '100%' }}  onClose={context.handlClose} >
                                 {context.errorResponse.message}
                                 </Alert>
                             </Snackbar>

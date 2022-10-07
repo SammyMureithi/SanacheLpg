@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 const { Consumer, Provider } = React.createContext();
 function Context( props ) {
-    const [userSession, setUserSession] = useState({});
+    const [userSession, setUserSession] = useState( {} );
+    const [open,setOpen]=useState(false)
     const [errorResponse, setErrorResponse] = useState( {
         error: null,
         message:""
@@ -15,6 +16,7 @@ function Context( props ) {
             return {...prevInput,[e.target.name]:e.target.value}
         })
     }
+    
     function login() {
         const newFormData = new FormData();
         newFormData.append( "username", loginInput.username );
@@ -28,7 +30,7 @@ function Context( props ) {
             } )
             .then( res => res.json() )
             .then( data => {
-                
+                      setOpen(true)
                     if ( data.error === false ) {
                         console.log( "Hello" );
                         //let's save our data in session then set them to State
@@ -58,12 +60,13 @@ function Context( props ) {
                     )  
             .catch( error => console.log( error ) );
     }
-  
-   
+    function handleOpenClose() {
+        setOpen(false)
+    }
   return (
       <Provider value={
           {
-              setSession: setUserSession, userSession: userSession, Login: login,
+              setSession: setUserSession, userSession: userSession, Login: login,open:open,handlClose:handleOpenClose,
               errorResponse: errorResponse,handleLoginInputChange:handleLoginInputChange, userInput:loginInput
           }}>
           {props.children}
