@@ -29,9 +29,7 @@ function CustomerAccount() {
   const navigate = useNavigate()
   const [fromDate, setFrom] = useState( new Date()  );
   const [to, setTo] = useState( new Date());
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState( 10 );
-  
+ 
   const customerDetailsPost = new FormData();
   customerDetailsPost.append( "customer_id", CustomerId );
     function handleClose() {
