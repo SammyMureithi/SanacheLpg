@@ -11,6 +11,7 @@ import LPO from './Pages/LPO';
 import ExpensesPage from './Pages/ExpensesPage';
 import DepositPage from './Pages/DepositPage';
 import CustomerAccount from './Pages/CustomerAccount';
+import UnconfirmedExpenses from './Pages/UnconfirmedExpenses';
 
 function App() {
   return (
@@ -25,7 +26,7 @@ function App() {
         <Route path='/Sales' element={<SalesPage />} />
         <Route path='/Transfers' element={<TransferPage />} />
         <Route path='/LPO' element={<LPO />} />
-        <Route path='/Expenses' element={<ExpensesPage />} />
+        <Route path='/Expenses' element={sessionStorage.getItem("role2") === "3" ?  <UnconfirmedExpenses/>: <ExpensesPage /> } />
         <Route path='/Deposit' element={<DepositPage />} />
         
       </Routes>
