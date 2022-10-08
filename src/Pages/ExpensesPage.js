@@ -54,7 +54,8 @@ function ExpensesPage() {
       <Card className='formExpenseCard'>
         <CardContent className='formExpense'>
           <TextField label="Amount" variant="outlined" name='Amount'
-            type={"number"} value={expense.Amount} onChange={ handleChange} /><br></br>
+            type={"number"} value={expense.Amount} onChange={handleChange} />
+          <br></br><br></br><br></br>
           <TextField label="Description" variant="outlined" onChange={handleChange}
             name="description" type={"text"} value={expense.description} /><br></br>
           <Button variant='contained' color='primary' onClick={handleAddExpenses}>Add Expense</Button>

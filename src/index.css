@@ -204,8 +204,12 @@ code {
   margin: 0px auto;
   width: 80vw;
   max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 .formExpense button{
+  margin: 10px auto;
   width: fit-content;
 }
 .expenseCardItem{
