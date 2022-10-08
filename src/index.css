@@ -208,6 +208,18 @@ code {
 .formExpense button{
   width: fit-content;
 }
+.expenseCardItem{
+  margin: 10px auto;
+}
+.masterExpenseCard{
+  margin: 10px auto;
+  width: 80vw;
+  max-width: 400px;
+}
+.expenseBtn{
+  display: flex;
+  justify-content: space-between;
+}
 @media only screen and (max-width: 700px) {
   .customerAccountCard{
     margin: 10px auto;
