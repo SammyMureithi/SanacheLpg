@@ -68,7 +68,7 @@ function UnconfirmedExpenses() {
                     const newUnconfirmedExpenses = unconfirmedExpenses.filter( element => element.expense_id !== id );
                     setUnconfirmedExpenses( newUnconfirmedExpenses );
                 }
-                console.log( data )
+               
             } )
             .catch( error => console.log( error ) )
         
